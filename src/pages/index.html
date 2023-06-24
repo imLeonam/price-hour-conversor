@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 
   <head>
     <meta charset="UTF-8" />
@@ -8,42 +8,57 @@
     <link href="/dist/output.css" rel="stylesheet" />
   </head>
 
-  <body class="bg-gray-800">
+  <body class="bg-gray-800 h-full m-0">
+    <h1 class="mt-8 text-center text-white font-black">FUNCTIONALITY ISNT WORKING YET</h1>
     <!-- Title -->
-    <div class="w-[70vw] max-width mx-auto text-center mt-12 py-4 p-2 rounded-xl bg-gray-900">
-      <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="cash"></ion-icon>
-      <ion-icon class="text-white align-middle text-5xl mb-2 ml-3" name="arrow-redo"></ion-icon>
-      <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="time"></ion-icon>
-      <h1 class="text-white font-bold text-2xl tracking-wide">
-        PRICE IN TIME CONVERSOR
-      </h1>
-    </div>
+    <header>
+      <div class="w-[70vw] max-width mx-auto text-center mt-12 h-max p-2 rounded-xl bg-gray-900">
+        <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="cash"></ion-icon>
+        <ion-icon class="text-white align-middle text-5xl mb-2 ml-3" name="arrow-redo"></ion-icon>
+        <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="time"></ion-icon>
+        <h1 class="text-white font-bold text-2xl tracking-wide">
+          PRICE IN TIME CONVERSOR
+        </h1>
+      </div>
+    </header>
 
-    <!-- Form -->
-    <div class="w-[70vw] max-width mx-auto p-10 mt-6 rounded-xl bg-gray-900">
-      <form>
-        <div class="grid gap-4 grid-cols-2">
-          <my-input-text id="txtSalary" name="salary" icon="cash" for="txtSalary" label="SALARY"></my-input-text>
-          <my-input-text id="txtWorkingDays" name="workingDays" icon="time" for="txtWorkingDays"
-            label="WORKING DAYS"></my-input-text>
-          <my-input-text id="txtProductPrice" name="productPrice" icon="cash" for="txtProductPrice"
-            label="PRODUCT PRICE"></my-input-text>
-          <my-input-text id="txtWorkingHours" name="workingHours" icon="time" for="txtWorkingHours"
-            label="WORKING HOURS"></my-input-text>
-        </div>
+    <!-- Form/Results -->
+    <article>
+      <div class="w-[70vw] max-width mx-auto p-10 mt-6 rounded-xl bg-gray-900">
+        <form>
+          <div class="grid gap-4 grid-cols-2">
+            <my-input-text id="txtSalary" name="salary" icon="cash" for="txtSalary" label="SALARY"></my-input-text>
+            <my-input-text id="txtWorkingDays" name="workingDays" icon="time" for="txtWorkingDays"
+              label="WORKING DAYS"></my-input-text>
+            <my-input-text id="txtProductPrice" name="productPrice" icon="cash" for="txtProductPrice"
+              label="PRODUCT PRICE"></my-input-text>
+            <my-input-text id="txtWorkingHours" name="workingHours" icon="time" for="txtWorkingHours"
+              label="WORKING HOURS"></my-input-text>
+          </div>
 
-        <div class="grid grid-cols-2 gap-4 mt-8">
-          <my-clean-button color="bg-yellow-300" icon="trash-outline"></my-clean-button>
-          <my-submit-button color="bg-green-500" icon="checkmark-circle-outline"></my-submit-button>
-        </div>
-      </form>
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <my-clean-button color="bg-yellow-300" icon="trash-outline"></my-clean-button>
+            <my-submit-button color="bg-green-500" icon="checkmark-circle-outline"></my-submit-button>
+          </div>
+        </form>
+      </div>
 
-    </div>
+      <!-- Results -->
+      <div class="expanded-panel mx-auto text-center mt-6 mb-6 py-4 p-2 rounded-xl">
 
-    <!-- Results -->
-    <div class="expanded-panel mx-auto text-center mt-6 mb-6 py-4 p-2 rounded-xl">
+      </div>
+    </article>
 
-    </div>
+    <footer>
+      <div class="text-center absolute bottom-0 w-full bg-gray-800">
+        <h3 class="text-white">
+          By
+          <a class="text-cyan-300" href="https://github.com/imLeonam">
+            @imLeonam
+            <ion-icon class="text-2xl align-middle" name="logo-github"></ion-icon></a>
+        </h3>
+      </div>
+    </footer>
   </body>
 
   <style>
