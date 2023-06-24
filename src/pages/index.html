@@ -10,74 +10,72 @@
 
   <body class="bg-gray-800">
     <!-- Title -->
-    <div class="w-[70vw] mx-auto text-center mt-12 py-4 p-2 rounded-xl bg-gray-900">
+    <div class="w-[70vw] max-width mx-auto text-center mt-12 py-4 p-2 rounded-xl bg-gray-900">
       <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="cash"></ion-icon>
       <ion-icon class="text-white align-middle text-5xl mb-2 ml-3" name="arrow-redo"></ion-icon>
       <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="time"></ion-icon>
-      <h1 class="text-white font-bold text-2xl tracking-wide">PRICE IN TIME CONVERSOR</h1>
+      <h1 class="text-white font-bold text-2xl tracking-wide">
+        PRICE IN TIME CONVERSOR
+      </h1>
     </div>
 
     <!-- Form -->
-    <div class="w-[70vw] mx-auto p-10 mt-6 rounded-xl bg-gray-900">
+    <div class="w-[70vw] max-width mx-auto p-10 mt-6 rounded-xl bg-gray-900">
       <form>
         <div class="grid gap-4 grid-cols-2">
-          <div class="flex flex-col">
-            <label class="ml-3 font-bold text-gray-100 tracking-wider" for="txtSalary">
-              SALARY
-              <ion-icon class="align-middle text-xl ml-2" name="cash"></ion-icon>
-            </label>
-            <input type="text" class="border border-transparent rounded-xl p-2 m-1 mt-2 mb-2" name="salary"
-              id="txtSalary" />
-          </div>
-          <div class="flex flex-col">
-            <label class="ml-3 font-bold text-gray-100 tracking-wider" for="txtWorkingDays">
-              WORKING DAYS
-              <ion-icon class="align-middle text-xl ml-2" name="time"></ion-icon>
-            </label>
-            <input type="text" class="border border-transparent rounded-xl p-2 m-1 mt-2 mb-2" name="workingDays"
-              id="txtWorkingDays" />
-          </div>
-          <div class="flex flex-col">
-            <label class="ml-3 font-bold text-gray-100 tracking-wider" for="txtProductPrice">
-              PRODUCT PRICE
-              <ion-icon class="align-middle text-xl ml-2" name="cash"></ion-icon>
-            </label>
-            <input type="text" class="border border-transparent rounded-xl p-2 m-1 mt-2 mb-2" name="productPrice"
-              id="txtProductPrice" />
-          </div>
-          <div class="flex flex-col">
-            <label class="ml-3 font-bold text-gray-100 tracking-wider" for="txtWorkingHours">
-              WORKING HOURS
-              <ion-icon class="align-middle text-xl ml-2" name="time"></ion-icon>
-            </label>
-            <input type="text" class="border border-transparent rounded-xl p-2 m-1 mt-2 mb-2" name="workingHours"
-              id="txtWorkingHours" />
-          </div>
-
+          <my-input-text id="txtSalary" name="salary" icon="cash" for="txtSalary" label="SALARY"></my-input-text>
+          <my-input-text id="txtWorkingDays" name="workingDays" icon="time" for="txtWorkingDays"
+            label="WORKING DAYS"></my-input-text>
+          <my-input-text id="txtProductPrice" name="productPrice" icon="cash" for="txtProductPrice"
+            label="PRODUCT PRICE"></my-input-text>
+          <my-input-text id="txtWorkingHours" name="workingHours" icon="time" for="txtWorkingHours"
+            label="WORKING HOURS"></my-input-text>
         </div>
+
         <div class="grid grid-cols-2 gap-4 mt-8">
-          <button class="text-base font-bold w-full rounded-xl bg-yellow-300 py-3">
-            <span class="text-2xl align-middle">
-              <ion-icon name="trash-outline"></ion-icon>
-            </span>
-            Clean
-          </button>
-          <button class="text-base font-bold w-full rounded-xl bg-green-500 py-3" type="submit">
-            <span class="text-2xl align-middle">
-              <ion-icon name="checkmark-circle-outline"></ion-icon>
-            </span>
-            Submit
-          </button>
+          <my-clean-button color="bg-yellow-300" icon="trash-outline"></my-clean-button>
+          <my-submit-button color="bg-green-500" icon="checkmark-circle-outline"></my-submit-button>
         </div>
       </form>
+
     </div>
 
-    <div class="">
+    <!-- Results -->
+    <div class="expanded-panel mx-auto text-center mt-6 mb-6 py-4 p-2 rounded-xl">
 
     </div>
   </body>
 
+  <style>
+    .max-width {
+      max-width: 700px;
+    }
+
+    .min-width {
+      min-width: 500px;
+    }
+
+    .expanded-panel {
+      color: transparent;
+      background-color: transparent;
+      width: 70vw;
+      max-width: 700px;
+      min-width: 500px;
+      transition: all 0.7s;
+    }
+
+    .expanded-panel.active {
+      --tw-bg-opacity: 1;
+      background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+      height: 500px;
+      transition: height 0.7s;
+    }
+  </style>
+
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/src/pages/components/inputText/inputText.js"></script>
+  <script src="/src/pages/components/buttons/mySubmitButton.js"></script>
+  <script src="/src/pages/components/buttons/myCleanButton.js"></script>
 
 </html>
