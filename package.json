@@ -1,4 +1,9 @@
 {
+  "name": "price-time-conversor",
+  "version": "0.0.4",
+  "author": "leonam <leonammrib@gmail.com>",
+  "license": "MIT",
+  "description": "calcuator for hours item price",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
