@@ -1,5 +1,3 @@
-// Preço do produto em horas = (preço do produto / (((salario / dias trabalhados no mês) / horas trabalhadas por dia) / horas trabalhadas por dia))
-
 class ProductPriceInTime {
   constructor(productPrice, salary, workingHours, workingDays) {
     this.productPrice = productPrice;
