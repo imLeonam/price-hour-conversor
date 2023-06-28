@@ -1,4 +1,5 @@
 node_modules/
 package-lock*
 yarn*
-dist/
+dist/assets/*
+dist/index.html
