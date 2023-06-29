@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Price in WorkHour</title>
-    <link href="/dist/output.css" rel="stylesheet" />
+    <!-- <link href="/dist/output.css" rel="stylesheet" /> -->
+    <link href="/styles/style.css" rel="stylesheet" />
   </head>
 
   <body class="bg-gray-800 h-full m-0">
@@ -38,14 +39,21 @@
 
           <div class="grid grid-cols-2 gap-4 mt-8">
             <my-clean-button color="bg-yellow-300" icon="trash-outline"></my-clean-button>
-            <my-submit-button color="bg-green-500" icon="checkmark-circle-outline"></my-submit-button>
+
+            <my-submit-button onclick="submitClick()" color="bg-green-500"
+              icon="checkmark-circle-outline"></my-submit-button>
           </div>
         </form>
       </div>
 
       <!-- Results -->
-      <div class="expanded-panel mx-auto text-center mt-6 mb-6 py-4 p-2 rounded-xl">
-
+      <div class="expanded-panel mx-auto text-right mt-6 mb-6 py-4 p-6 rounded-xl">
+        <h3 id="salaryResult"></h3>
+        <h3 id="valueDaysResult"></h3>
+        <h3 id="valueHoursResult"></h3>
+        <h3 id="realProdPriceResult"></h3>
+        <h3 id="workTimeNeededResult"></h3>
+        <h3 id="workTotalHourResult"></h3>
       </div>
     </article>
 
@@ -60,37 +68,75 @@
       </div>
     </footer>
   </body>
-
-  <style>
-    .max-width {
-      max-width: 700px;
-    }
-
-    .min-width {
-      min-width: 500px;
-    }
-
-    .expanded-panel {
-      color: transparent;
-      background-color: transparent;
-      width: 70vw;
-      max-width: 700px;
-      min-width: 500px;
-      transition: all 0.7s;
-    }
-
-    .expanded-panel.active {
-      --tw-bg-opacity: 1;
-      background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-      height: 500px;
-      transition: height 0.7s;
-    }
-  </style>
-
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/src/pages/components/inputText/inputText.js"></script>
   <script src="/src/pages/components/buttons/mySubmitButton.js"></script>
   <script src="/src/pages/components/buttons/myCleanButton.js"></script>
+
+  <script src="/src/scripts/ProductPriceInTime.js"></script>
+  <script>
+    const ProductPrice = document.querySelector('#txtProductPrice');
+    const Salary = document.querySelector('#txtSalary');
+    const WorkingHours = document.querySelector('#txtWorkingHours');
+    const WorkingDays = document.querySelector('#txtWorkingDays');
+
+    console.log(inputsValues);
+
+    function submitClick() {
+      let formulario = document.querySelector('form');
+      formulario.addEventListener('submit', (event) => {
+        event.preventDefault(); // Cancela o comportamento padrão do envio de formulário
+
+        const inputsValues = {
+          productPrice: ProductPrice.querySelector('input').value,
+          salary: Salary.querySelector('input').value,
+          workingHours: WorkingHours.querySelector('input').value,
+          workingDays: WorkingDays.querySelector('input').value,
+        }
+
+        const productHourPrice = new ProductPriceInTime(
+          inputsValues.productPrice,
+          inputsValues.salary,
+          inputsValues.workingHours,
+          inputsValues.workingDays
+        );
+        const salaryResult = document.querySelector('#salaryResult');
+        const valueDaysResult = document.querySelector('#valueDaysResult');
+        const valueHoursResult = document.querySelector('#valueHoursResult');
+        const realProdPriceResult = document.querySelector('#realProdPriceResult');
+        const workTimeNeededResult = document.querySelector('#workTimeNeededResult');
+        const workTotalHourResult = document.querySelector('#workTotalHourResult');
+
+        const valueHours = productHourPrice.getEarnPerHour();
+        const valueDays = productHourPrice.getEarnPerDay();
+        const salary = productHourPrice.getSalary();
+        const realProdPrice = productHourPrice.getProductPrice();
+        const totalProdHoursPrice = productHourPrice.productValueInHours();
+        const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
+
+        salaryResult.innerText = 'Você ganha R$ ' + salary.toFixed(2);
+        valueDaysResult.innerText = 'Você ganha R$ ' + valueDays.toFixed(2) + ' por dia';
+        valueHoursResult.innerText = 'Você ganha R$ ' + valueHours.toFixed(2) + ' por hora';
+        realProdPriceResult.innerText = 'O Gasto é R$ ' + realProdPrice.toFixed(2);
+        workTimeNeededResult.innerText = 'Você precisa trabalhar ' + formattedProdHourPrice + ' para pagar isso.';
+        workTotalHourResult.innerText = 'Um total de ' + totalProdHoursPrice.toFixed(2) + ' horas.';
+
+        let resultsContainer = document.querySelector('.expanded-panel');
+
+        resultsContainer.classList.add('active');
+
+        console.log('Você ganha R$', salary.toFixed(2));
+        console.log('Você ganha R$', valueDays.toFixed(2), 'por dia');
+        console.log('Você ganha R$', valueHours.toFixed(2), 'por hora');
+        console.log('O Gasto é R$', realProdPrice.toFixed(2));
+        console.log('Você precisa trabalhar', formattedProdHourPrice, 'para pagar isso.');
+        console.log('Um total de', totalProdHoursPrice.toFixed(2), 'horas.');
+
+      });
+
+    }
+
+  </script>
 
 </html>

@@ -17,6 +17,7 @@ class InputText extends HTMLElement {
             const icon = this.getAttribute('icon');
             this.setIcon(icon);
 
+
             this.innerHTML = this.buildComponent(this.component);
         } catch (error) {
             console.error('Error loading component:', error);
@@ -47,7 +48,6 @@ class InputText extends HTMLElement {
         const labelIcon = labelElement.innerHTML
 
         labelElement.innerHTML = labelText + labelIcon;
-
         return doc.documentElement.innerHTML;
     }
 }

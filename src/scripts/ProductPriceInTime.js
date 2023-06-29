@@ -1,9 +1,9 @@
 class ProductPriceInTime {
   constructor(productPrice, salary, workingHours, workingDays) {
-    this.productPrice = productPrice;
-    this.salary = salary;
-    this.workingHours = workingHours;
-    this.workingDays = workingDays;
+    this.productPrice = parseFloat(productPrice);
+    this.salary = parseFloat(salary);
+    this.workingHours = parseFloat(workingHours);
+    this.workingDays = parseFloat(workingDays);
     this.monthDays = 22;
     this.earnedPerDay = 0;
     this.earnedPerHour = 0;
@@ -66,18 +66,18 @@ class ProductPriceInTime {
   }
 }
 
-const productHourPrice = new ProductPriceInTime(233, 3500, 8, 5);
+// const productHourPrice = new ProductPriceInTime(233, 3500, 8, 5);
 
-const valueHours = productHourPrice.getEarnPerHour();
-const valueDays = productHourPrice.getEarnPerDay();
-const salary = productHourPrice.getSalary();
-const realProdPrice = productHourPrice.getProductPrice();
-const totalProdHoursPrice = productHourPrice.productValueInHours();
-const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
+// const valueHours = productHourPrice.getEarnPerHour();
+// const valueDays = productHourPrice.getEarnPerDay();
+// const salary = productHourPrice.getSalary();
+// const realProdPrice = productHourPrice.getProductPrice();
+// const totalProdHoursPrice = productHourPrice.productValueInHours();
+// const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
 
-console.log('Você ganha R$', salary.toFixed(2));
-console.log('Você ganha R$', valueDays.toFixed(2), 'por dia');
-console.log('Você ganha R$', valueHours.toFixed(2), 'por hora');
-console.log('O Gasto é R$', realProdPrice.toFixed(2));
-console.log('Você precisa trabalhar', formattedProdHourPrice, 'para pagar isso.');
-console.log('Um total de', totalProdHoursPrice.toFixed(2), 'horas.');
+// console.log('Você ganha R$', salary.toFixed(2));
+// console.log('Você ganha R$', valueDays.toFixed(2), 'por dia');
+// console.log('Você ganha R$', valueHours.toFixed(2), 'por hora');
+// console.log('O Gasto é R$', realProdPrice.toFixed(2));
+// console.log('Você precisa trabalhar', formattedProdHourPrice, 'para pagar isso.');
+// console.log('Um total de', totalProdHoursPrice.toFixed(2), 'horas.');
