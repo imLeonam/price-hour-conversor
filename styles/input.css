@@ -32,13 +32,13 @@
     font-size: 1em;
     color: rgba(255, 255, 255, 0.57);
     text-transform: uppercase;
-    transition: ease-in-out 0.1s;
+    transition: 0.2s;
 }
 
 .inputBox input:valid~span,
 .inputBox input:focus~span {
     color: #00df77eb;
-    transform: translateX(12px) translateY(-10px);
+    transform: translateX(12px) translateY(-14px);
     font-size: 0.76em;
     padding: 0 12px;
     background: #00df77eb;
