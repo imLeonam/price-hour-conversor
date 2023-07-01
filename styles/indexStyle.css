@@ -1,0 +1,140 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 30px;
+    background: #1d2b3a;
+}
+
+header {
+    color: white;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    background: #0f161e;
+    width: 100vw;
+    height: 80px;
+}
+
+header h2 {
+    margin-top: 26px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer {
+    display: flex;
+    position: static;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #172029;
+    border-radius: 15px;
+    width: 320px;
+    height: 360px;
+    margin-bottom: 90px;
+    margin-top: 20%;
+}
+
+form div.inputsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonsContainer {
+    display: flex;
+    position: absolute;
+    margin-top: 450px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonsContainer button {
+    position: relative;
+    width: 140px;
+    height: 48px;
+    margin: 10px;
+    border-style: none;
+    border-radius: 6px;
+    color: #172029;
+    font-size: 0.96rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttonsContainer button:hover {
+    border: 2px solid white;
+    transition: ease 0.1s;
+}
+
+.buttonsContainer button span ion-icon {
+    text-align: center;
+    font-size: x-large;
+    vertical-align: middle;
+}
+
+.reset {
+    background: #fcd020;
+}
+
+.submit {
+    background: rgb(3, 204, 104);
+}
+
+.expanded-panel {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    background: transparent;
+    color: transparent;
+    border-radius: 15px;
+    max-width: 95%;
+    transition: all 0.4s;
+    overflow: hidden;
+    height: 0;
+}
+
+.expanded-panel h4 {
+    font-size: 1rem;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.expanded-panel.active {
+    background: #172029;
+    color: white;
+    height: auto;
+    width: 500px;
+    transition: all 1s;
+}
+
+footer {
+    position: static;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ion-icon {
+    vertical-align: middle;
+    text-align: center;
+}

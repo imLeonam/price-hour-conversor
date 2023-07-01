@@ -6,134 +6,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Price in WorkHour</title>
     <!-- <link href="/dist/output.css" rel="stylesheet" /> -->
-    <link href="/styles/style.css" rel="stylesheet" />
+    <link href="/styles/indexStyle.css" rel="stylesheet" />
+    <link href="/styles/input.css" rel="stylesheet" />
   </head>
 
-  <body class="bg-gray-800 h-full m-0">
+  <body>
     <!-- Title -->
     <header>
-      <div class="w-[70vw] max-width mx-auto text-center mt-12 h-max p-2 rounded-xl bg-gray-900">
-        <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="cash"></ion-icon>
-        <ion-icon class="text-white align-middle text-5xl mb-2 ml-3" name="arrow-redo"></ion-icon>
-        <ion-icon class="text-white align-middle text-5xl mb-2 ml-2" name="time"></ion-icon>
-        <h1 class="text-white font-bold text-2xl tracking-wide">
-          PRICE IN TIME CONVERSOR
-        </h1>
-      </div>
+      <h2>
+        PRICE IN TIME CONVERSOR
+      </h2>
     </header>
 
     <!-- Form/Results -->
     <article>
-      <div class="w-[70vw] max-width mx-auto p-10 mt-6 rounded-xl bg-gray-900">
+      <div class="formContainer">
         <form>
-          <div class="grid gap-2 grid-cols-2">
-            <my-input-text id="txtSalary" name="salary" icon="cash" for="txtSalary" label="SALARY"></my-input-text>
-            <my-input-text id="txtWorkingDays" name="workingDays" icon="time" for="txtWorkingDays"
-              label="WORKING DAYS/WEEK"></my-input-text>
-            <my-input-text id="txtProductPrice" name="productPrice" icon="cash" for="txtProductPrice"
-              label="PRODUCT PRICE"></my-input-text>
-            <my-input-text id="txtWorkingHours" name="workingHours" icon="time" for="txtWorkingHours"
-              label="WORKING HOURS/DAY"></my-input-text>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4 mt-8">
-            <my-clean-button color="bg-yellow-300" icon="trash-outline"></my-clean-button>
-
-            <my-submit-button onclick="submitClick()" color="bg-green-500"
-              icon="checkmark-circle-outline"></my-submit-button>
-          </div>
+          <div class="inputsContainer">
+            <div class="inputBox">
+              <input id="txtSalary" name="salary" for="txtSalary" type="text" required="not-required" />
+              <span>SALARY</span>
+            </div>
+            <div class="inputBox">
+              <input id="txtWorkingDays" name="workingDays" for="txtWorkingDays" type="text" required="not-required" />
+              <span>WORKING DAYS / WEEK</span>
+            </div>
+            <div class="inputBox">
+              <input id="txtWorkingHours" name="workingHours" for="txtWorkingHours" type="text"
+                required="not-required" />
+              <span>WORKING HOURS / DAY</span>
+            </div>
+            <div class="inputBox">
+              <input id="txtProductPrice" name="productPrice" for="txtProductPrice" type="text"
+                required="not-required" />
+              <span>PRODUCT PRICE</span>
+            </div>
+            <div class="buttonsContainer">
+              <button class="reset" onclick="onClearClick()" type="reset">
+                <span>
+                  <ion-icon name="trash-outline"></ion-icon>
+                </span>
+                CLEAR
+              </button>
+              <button class="submit" onclick="submitClick()">
+                <span>
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+                </span>
+                SUBMIT
+              </button>
+            </div>
         </form>
+      </div>
       </div>
 
       <!-- Results -->
-      <div class="expanded-panel mx-auto text-right mt-6 mb-6 py-4 p-6 rounded-xl">
-        <h3 id="salaryResult"></h3>
-        <h3 id="valueDaysResult"></h3>
-        <h3 id="valueHoursResult"></h3>
-        <h3 id="realProdPriceResult"></h3>
-        <h3 id="workTimeNeededResult"></h3>
-        <h3 id="workTotalHourResult"></h3>
+      <div class="expanded-panel">
+        <h4 id="salaryResult"></h4>
+        <h4 id="valueDaysResult"></h4>
+        <h4 id="valueHoursResult"></h4>
+        <h4 id="realProdPriceResult"></h4>
+        <h4 id="workTimeNeededResult"></h4>
+        <h4 id="workTotalHourResult"></h4>
       </div>
     </article>
 
     <footer>
-      <div class="text-center absolute bottom-0 w-full bg-gray-800">
-        <h3 class="text-white">
+      <div class="">
+        <h4 class="">
           By
-          <a class="text-cyan-300" href="https://github.com/imLeonam">
+          <a class="" href="https://github.com/imLeonam">
             @imLeonam
-            <ion-icon class="text-2xl align-middle" name="logo-github"></ion-icon></a>
-        </h3>
+            <ion-icon class="" name="logo-github"></ion-icon></a>
+        </h4>
       </div>
     </footer>
   </body>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  <script src="/src/pages/components/inputText/inputText.js"></script>
-  <script src="/src/pages/components/buttons/mySubmitButton.js"></script>
-  <script src="/src/pages/components/buttons/myCleanButton.js"></script>
-
   <script src="/src/scripts/ProductPriceInTime.js"></script>
   <script>
-    const ProductPrice = document.querySelector('#txtProductPrice');
-    const Salary = document.querySelector('#txtSalary');
-    const WorkingHours = document.querySelector('#txtWorkingHours');
-    const WorkingDays = document.querySelector('#txtWorkingDays');
-
-    console.log(inputsValues);
+    let resultsContainer = document.querySelector('.expanded-panel');
+    const salaryResult = document.querySelector('#salaryResult');
+    const valueDaysResult = document.querySelector('#valueDaysResult');
+    const valueHoursResult = document.querySelector('#valueHoursResult');
+    const realProdPriceResult = document.querySelector('#realProdPriceResult');
+    const workTimeNeededResult = document.querySelector('#workTimeNeededResult');
+    const workTotalHourResult = document.querySelector('#workTotalHourResult');
 
     function submitClick() {
-      let formulario = document.querySelector('form');
-      formulario.addEventListener('submit', (event) => {
-        event.preventDefault(); // Cancela o comportamento padrão do envio de formulário
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-        const inputsValues = {
-          productPrice: ProductPrice.querySelector('input').value,
-          salary: Salary.querySelector('input').value,
-          workingHours: WorkingHours.querySelector('input').value,
-          workingDays: WorkingDays.querySelector('input').value,
+        const productPrice = document.querySelector('#txtProductPrice').value;
+        const salary = document.querySelector('#txtSalary').value;
+        const workingHours = document.querySelector('#txtWorkingHours').value;
+        const workingDays = document.querySelector('#txtWorkingDays').value;
+
+        if (workingHours > 21) {
+          window.alert('You\'re working too much, find help!');
+          return;
+        }
+        if (workingDays > 7) {
+          window.alert('The weeks have only 7 days!');
+          return;
         }
 
         const productHourPrice = new ProductPriceInTime(
-          inputsValues.productPrice,
-          inputsValues.salary,
-          inputsValues.workingHours,
-          inputsValues.workingDays
+          productPrice,
+          salary,
+          workingHours,
+          workingDays
         );
-        const salaryResult = document.querySelector('#salaryResult');
-        const valueDaysResult = document.querySelector('#valueDaysResult');
-        const valueHoursResult = document.querySelector('#valueHoursResult');
-        const realProdPriceResult = document.querySelector('#realProdPriceResult');
-        const workTimeNeededResult = document.querySelector('#workTimeNeededResult');
-        const workTotalHourResult = document.querySelector('#workTotalHourResult');
 
         const valueHours = productHourPrice.getEarnPerHour();
         const valueDays = productHourPrice.getEarnPerDay();
-        const salary = productHourPrice.getSalary();
+        const salaryValue = productHourPrice.getSalary();
         const realProdPrice = productHourPrice.getProductPrice();
         const totalProdHoursPrice = productHourPrice.productValueInHours();
         const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
 
-        salaryResult.innerText = 'Você ganha R$ ' + salary.toFixed(2);
-        valueDaysResult.innerText = 'Você ganha R$ ' + valueDays.toFixed(2) + ' por dia';
-        valueHoursResult.innerText = 'Você ganha R$ ' + valueHours.toFixed(2) + ' por hora';
-        realProdPriceResult.innerText = 'O Gasto é R$ ' + realProdPrice.toFixed(2);
-        workTimeNeededResult.innerText = 'Você precisa trabalhar ' + formattedProdHourPrice + ' para pagar isso.';
-        workTotalHourResult.innerText = 'Um total de ' + totalProdHoursPrice.toFixed(2) + ' horas.';
+        salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
+        valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays) + ' por dia';
+        valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours) + ' por hora';
 
-        let resultsContainer = document.querySelector('.expanded-panel');
+        if (productPrice) {
+          realProdPriceResult.innerText = 'O Gasto é ' + realProdPrice;
+          workTimeNeededResult.innerText = 'Você precisa trabalhar ' + formattedProdHourPrice + ' para pagar isso.';
+          workTotalHourResult.innerText = 'Aproximadamente ' + totalProdHoursPrice.toFixed(2) + ' horas.';
+        }
 
         resultsContainer.classList.add('active');
+      })
+    }
 
-        console.log('Você ganha R$', salary.toFixed(2));
-        console.log('Você ganha R$', valueDays.toFixed(2), 'por dia');
-        console.log('Você ganha R$', valueHours.toFixed(2), 'por hora');
-        console.log('O Gasto é R$', realProdPrice.toFixed(2));
-        console.log('Você precisa trabalhar', formattedProdHourPrice, 'para pagar isso.');
-        console.log('Um total de', totalProdHoursPrice.toFixed(2), 'horas.');
-
-      });
-
+    function onClearClick() {
+      resultsContainer.classList.remove('active');
+      salaryResult.innerText = '';
+      valueDaysResult.innerText = '';
+      valueHoursResult.innerText = '';
+      realProdPriceResult.innerText = '';
+      workTimeNeededResult.innerText = '';
+      workTotalHourResult.innerText = '';
     }
 
   </script>

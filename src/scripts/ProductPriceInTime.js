@@ -9,12 +9,25 @@ class ProductPriceInTime {
     this.earnedPerHour = 0;
   }
 
+  formatCurrency(amount, language = 'pt-BR', currency = 'BRL', precision = 2) {
+    let amountParsed = amount;
+    if (typeof amountParsed !== 'number') {
+      amountParsed = parseFloat(amount);
+    }
+    if (typeof amountParsed !== 'number') return null;
+    return amountParsed.toLocaleString(language, {
+      style: 'currency',
+      currency,
+      minimumFractionDigits: precision,
+      maximumFractionDigits: precision,
+    });
+  }
+
   convertDecimalTime(decimal) {
     if (decimal > 23.99) {
       const dias = Math.floor(decimal / this.workingHours);
       const restHours = decimal % this.workingHours;
       const minutes = Math.round((restHours - Math.floor(restHours)) * 60);
-      console.log(dias, restHours, minutes)
 
       return `${dias} dias, ${Math.floor(restHours)} horas e ${minutes} minutos`;
     }
