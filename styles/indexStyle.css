@@ -24,6 +24,12 @@ header h2 {
     margin-top: 26px;
 }
 
+header select {
+    position: absolute;
+    margin-top: 26px;
+    right: 10px;
+}
+
 article {
     display: flex;
     flex-direction: column;
@@ -39,8 +45,8 @@ article {
     align-items: center;
     background: #172029;
     border-radius: 15px;
-    width: 320px;
-    height: 360px;
+    width: 360px;
+    height: 330px;
     margin-bottom: 90px;
     margin-top: 20%;
 }

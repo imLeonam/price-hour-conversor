@@ -1,5 +1,5 @@
 class ProductPriceInTime {
-  constructor(productPrice, salary, workingHours, workingDays) {
+  constructor(productPrice, salary, workingHours, workingDays, lang) {
     this.productPrice = parseFloat(productPrice);
     this.salary = parseFloat(salary);
     this.workingHours = parseFloat(workingHours);
@@ -7,9 +7,13 @@ class ProductPriceInTime {
     this.monthDays = 22;
     this.earnedPerDay = 0;
     this.earnedPerHour = 0;
+    this.lang = lang;
   }
 
   formatCurrency(amount, language = 'pt-BR', currency = 'BRL', precision = 2) {
+    if (this.lang === 'en') {
+      currency = 'USD';
+    }
     let amountParsed = amount;
     if (typeof amountParsed !== 'number') {
       amountParsed = parseFloat(amount);
@@ -29,12 +33,20 @@ class ProductPriceInTime {
       const restHours = decimal % this.workingHours;
       const minutes = Math.round((restHours - Math.floor(restHours)) * 60);
 
-      return `${dias} dias, ${Math.floor(restHours)} horas e ${minutes} minutos`;
+      if (this.lang === 'br') {
+        return `${dias} dias, ${Math.floor(restHours)} horas e ${minutes} minutos`;
+      } else if (this.lang === 'en') {
+        return `${dias} days, ${Math.floor(restHours)} hours and ${minutes} minutes`;
+      }
     }
     const hours = Math.floor(decimal);
     const minutes = Math.round((decimal - hours) * 60);
 
-    return `${hours ? hours + ' horas e ' : ''}${minutes} minutos`;
+    if (this.lang === 'br') {
+      return `${hours ? hours + ' horas e ' : ''}${minutes} minutos`;
+    } else if (this.lang === 'en') {
+      return `${hours ? hours + ' hours and ' : ''}${minutes} minutes`;
+    }
   }
 
   myValuePerHour() {
@@ -78,19 +90,3 @@ class ProductPriceInTime {
     return this.productValueInHours() / this.workingHours;
   }
 }
-
-// const productHourPrice = new ProductPriceInTime(233, 3500, 8, 5);
-
-// const valueHours = productHourPrice.getEarnPerHour();
-// const valueDays = productHourPrice.getEarnPerDay();
-// const salary = productHourPrice.getSalary();
-// const realProdPrice = productHourPrice.getProductPrice();
-// const totalProdHoursPrice = productHourPrice.productValueInHours();
-// const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
-
-// console.log('Você ganha R$', salary.toFixed(2));
-// console.log('Você ganha R$', valueDays.toFixed(2), 'por dia');
-// console.log('Você ganha R$', valueHours.toFixed(2), 'por hora');
-// console.log('O Gasto é R$', realProdPrice.toFixed(2));
-// console.log('Você precisa trabalhar', formattedProdHourPrice, 'para pagar isso.');
-// console.log('Um total de', totalProdHoursPrice.toFixed(2), 'horas.');

@@ -13,9 +13,20 @@
   <body>
     <!-- Title -->
     <header>
-      <h2>
+      <h2 data-lang="en">
         PRICE IN TIME CONVERSOR
       </h2>
+      <h2 data-lang="br">
+        CONVERSOR DE PREÇO EM HORA
+      </h2>
+      <select id="change-language">
+        <option value="en" selected="selected">
+          English (US)
+        </option>
+        <option value="br">
+          Português (BR)
+        </option>
+      </select>
     </header>
 
     <!-- Form/Results -->
@@ -25,34 +36,40 @@
           <div class="inputsContainer">
             <div class="inputBox">
               <input id="txtSalary" name="salary" for="txtSalary" type="text" required="not-required" />
-              <span>SALARY</span>
+              <span data-lang="en">SALARY</span>
+              <span data-lang="br">SALÁRIO</span>
             </div>
             <div class="inputBox">
               <input id="txtWorkingDays" name="workingDays" for="txtWorkingDays" type="text" required="not-required" />
-              <span>WORKING DAYS / WEEK</span>
+              <span data-lang="en">WORKING DAYS / WEEK</span>
+              <span data-lang="br">DIAS TRABALHADOS / SEMANA</span>
             </div>
             <div class="inputBox">
               <input id="txtWorkingHours" name="workingHours" for="txtWorkingHours" type="text"
                 required="not-required" />
-              <span>WORKING HOURS / DAY</span>
+              <span data-lang="en">WORKING HOURS / DAY</span>
+              <span data-lang="br">HORAS TRABALHADAS / DIA</span>
             </div>
             <div class="inputBox">
               <input id="txtProductPrice" name="productPrice" for="txtProductPrice" type="text"
                 required="not-required" />
-              <span>PRODUCT PRICE</span>
+              <span data-lang="en">PRODUCT PRICE</span>
+              <span data-lang="br">PREÇO DO PRODUTO</span>
             </div>
             <div class="buttonsContainer">
               <button class="reset" onclick="onClearClick()" type="reset">
                 <span>
                   <ion-icon name="trash-outline"></ion-icon>
                 </span>
-                CLEAR
+                <span data-lang="en">CLEAR</span>
+                <span data-lang="br">LIMPAR</span>
               </button>
               <button class="submit" onclick="submitClick()">
                 <span>
                   <ion-icon name="checkmark-circle-outline"></ion-icon>
                 </span>
-                SUBMIT
+                <span data-lang="en">SUBMIT</span>
+                <span data-lang="br">CALCULAR</span>
               </button>
             </div>
         </form>
@@ -73,7 +90,8 @@
     <footer>
       <div class="">
         <h4 class="">
-          By
+          <span data-lang="en">By</span>
+          <span data-lang="br">Por</span>
           <a class="" href="https://github.com/imLeonam">
             @imLeonam
             <ion-icon class="" name="logo-github"></ion-icon></a>
@@ -81,6 +99,7 @@
       </div>
     </footer>
   </body>
+  <script src="libs/i18n-language.js-master/i18n-language.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="/src/scripts/ProductPriceInTime.js"></script>
@@ -93,6 +112,8 @@
     const workTimeNeededResult = document.querySelector('#workTimeNeededResult');
     const workTotalHourResult = document.querySelector('#workTotalHourResult');
 
+    const selectLanguage = document.querySelector("#change-language");
+
     function submitClick() {
       const form = document.querySelector('form');
       form.addEventListener('submit', (event) => {
@@ -104,19 +125,32 @@
         const workingDays = document.querySelector('#txtWorkingDays').value;
 
         if (workingHours > 21) {
-          window.alert('You\'re working too much, find help!');
-          return;
+          if (this.lang === 'en') {
+            window.alert('You\'re working too much, find help!');
+            return;
+          }
+          if (this.lang === 'br') {
+            window.alert('Você esta trabalhando demais, busque ajuda!');
+            return;
+          }
         }
         if (workingDays > 7) {
-          window.alert('The weeks have only 7 days!');
-          return;
+          if (this.lang === 'en') {
+            window.alert('The weeks have only 7 days!');
+            return;
+          }
+          if (this.lang === 'br') {
+            window.alert('As semanas só tem 7 dias!');
+            return;
+          }
         }
 
         const productHourPrice = new ProductPriceInTime(
           productPrice,
           salary,
           workingHours,
-          workingDays
+          workingDays,
+          selectLanguage.value,
         );
 
         const valueHours = productHourPrice.getEarnPerHour();
@@ -126,14 +160,31 @@
         const totalProdHoursPrice = productHourPrice.productValueInHours();
         const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
 
-        salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
-        valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays) + ' por dia';
-        valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours) + ' por hora';
+        if (selectLanguage.value === 'br') {
+          salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
+          valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays) + ' por dia';
+          valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours) + ' por hora';
+        }
+        else if (selectLanguage.value === 'en') {
+          salaryResult.innerText = 'You earn ' + productHourPrice.formatCurrency(salaryValue);
+          valueDaysResult.innerText = productHourPrice.formatCurrency(valueDays) + ' per day';
+          valueHoursResult.innerText = 'and ' + productHourPrice.formatCurrency(valueHours) + ' hourly';
+        }
 
-        if (productPrice) {
+        if (!productPrice) {
+          resultsContainer.classList.add('active');
+          return;
+        }
+
+        if (selectLanguage.value === 'br') {
           realProdPriceResult.innerText = 'O Gasto é ' + realProdPrice;
           workTimeNeededResult.innerText = 'Você precisa trabalhar ' + formattedProdHourPrice + ' para pagar isso.';
           workTotalHourResult.innerText = 'Aproximadamente ' + totalProdHoursPrice.toFixed(2) + ' horas.';
+        }
+        else if (selectLanguage.value === 'en') {
+          realProdPriceResult.innerText = 'The expanse is ' + realProdPrice;
+          workTimeNeededResult.innerText = 'you need to work ' + formattedProdHourPrice + ' to pay this.';
+          workTotalHourResult.innerText = 'Approximately ' + totalProdHoursPrice.toFixed(2) + ' hours.';
         }
 
         resultsContainer.classList.add('active');
