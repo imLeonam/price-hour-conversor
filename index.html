@@ -7,6 +7,7 @@
     <title>Price in WorkHour</title>
     <!-- <link href="/dist/output.css" rel="stylesheet" /> -->
     <link href="/styles/indexStyle.css" rel="stylesheet" />
+    <link href="/styles/selectStyle.css" rel="stylesheet" />
     <link href="/styles/input.css" rel="stylesheet" />
   </head>
 
@@ -19,15 +20,18 @@
       <h2 data-lang="br">
         CONVERSOR DE PREÇO EM HORA
       </h2>
+    </header>
+    <div class="select">
       <select id="change-language">
-        <option value="en" selected="selected">
-          English (US)
+        <option value="en">
+          EN
         </option>
-        <option value="br">
-          Português (BR)
+        <option value="br" selected="selected">
+          PT
         </option>
       </select>
-    </header>
+      <span class="focus"></span>
+    </div>
 
     <!-- Form/Results -->
     <article>

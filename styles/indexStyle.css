@@ -1,3 +1,7 @@
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -21,13 +25,9 @@ header {
 }
 
 header h2 {
-    margin-top: 26px;
-}
-
-header select {
-    position: absolute;
-    margin-top: 26px;
-    right: 10px;
+    display: flex;
+    margin-top: 24px;
+    text-align: center;
 }
 
 article {

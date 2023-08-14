@@ -1,0 +1,38 @@
+select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    color: #fff;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+}
+
+select option {
+    margin-top: 100px;
+    color: #0f161e;
+    min-width: 3ch;
+    max-width: 30ch;
+}
+
+.select {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 3ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, #0f161e, #172029 11%);
+}
