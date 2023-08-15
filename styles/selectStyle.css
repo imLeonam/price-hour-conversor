@@ -23,10 +23,16 @@ select option {
 
 .select {
     display: flex;
-    align-items: center;
+    flex-direction: row;
     position: relative;
-    min-width: 3ch;
+    min-width: 30px;
     max-width: 30ch;
+    max-height: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    align-self: center;
     border: 1px solid var(--select-border);
     border-radius: 0.25em;
     padding: 0.25em 0.5em;
