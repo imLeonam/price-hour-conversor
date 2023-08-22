@@ -108,7 +108,10 @@
   <script src="libs/i18n-language.js-master/i18n-language.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
   <script src="/src/scripts/ProductPriceInTime.js"></script>
+  <script src="/src/scripts/Historic.js"></script>
+
   <script>
     let resultsContainer = document.querySelector('.expanded-panel');
     const salaryResult = document.querySelector('#salaryResult');
@@ -165,6 +168,17 @@
         const realProdPrice = productHourPrice.getProductPrice();
         const totalProdHoursPrice = productHourPrice.productValueInHours();
         const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
+
+        const historyData = {
+          valueHours: valueHours.toFixed(2),
+          valueDays: valueDays.toFixed(2),
+          salaryValue: salaryValue.toFixed(2),
+          realProdPrice: realProdPrice.toFixed(2),
+          totalProdHoursPrice: totalProdHoursPrice.toFixed(2),
+          formattedProdHourPrice: formattedProdHourPrice,
+        }
+
+        saveInHistory(historyData);
 
         if (selectLanguage.value === 'br') {
           salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
