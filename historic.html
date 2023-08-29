@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price in WorkHour</title>
+    <link href="/styles/indexStyle.css" rel="stylesheet" />
+    <link href="/styles/selectStyle.css" rel="stylesheet" />
+    <link href="/styles/navbar.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Title -->
+    <header>
+      <div>
+        <h2 data-lang="en">
+          PRICE IN TIME CONVERSOR
+        </h2>
+        <h2 data-lang="br">
+          CONVERSOR DE PREÇO EM HORA
+        </h2>
+      </div>
+      <div class="select">
+        <select id="change-language">
+          <option value="en">
+            EN
+          </option>
+          <option value="br" selected="selected">
+            PT
+          </option>
+        </select>
+        <span class="focus"></span>
+      </div>
+      <nav class="nav-bar">
+        <div class="links">
+          <a class="active" href="/index.html">
+            Home
+          </a>
+          <a href="/historic.html">
+            <span data-lang="br"> Histórico </span>
+            <span data-lang="en"> Historic </span>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <article>
+      <!-- Results -->
+      <div id="container"></div>
+    </article>
+
+    <footer>
+      <div class="">
+        <h4 class="">
+          <span data-lang="en">By</span>
+          <span data-lang="br">Por</span>
+          <a class="" href="https://github.com/imLeonam">
+            @imLeonam
+            <ion-icon class="" name="logo-github"></ion-icon></a>
+        </h4>
+      </div>
+    </footer>
+  </body>
+  <script src="/libs/i18n-language.js-master/i18n-language.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="/src/scripts/Historic.js"></script>
+
+  <script>
+    const jsonData = getHistory();
+    console.log('alou', jsonData);
+
+    const container = document.getElementById('container'); // Replace 'container' with the ID of the element where you want to append the HTML
+
+    // if (!jsonData) return;
+
+    jsonData.forEach(item => {
+      const div = document.createElement('div');
+      div.classList.add('expanded-panel');
+
+      const h5Timestemp = document.createElement('h5');
+      h5Timestemp.textContent = `Submited at: ${item.created_at}`;
+      h5Timestemp.id = 'timestemp';
+
+      const h5Salary = document.createElement('h5');
+      h5Salary.textContent = `Salary: ${item.salaryValue}`;
+      h5Salary.id = 'salaryResult';
+
+      const h5ValueDays = document.createElement('h5');
+      h5ValueDays.textContent = `Value Days: ${item.valueDays}`;
+      h5ValueDays.id = 'valueDaysResult';
+
+      const h5ValueHours = document.createElement('h5');
+      h5ValueHours.textContent = `Value Hours: ${item.valueHours}`;
+      h5ValueHours.id = 'valueHoursResult';
+
+      const h5RealProdPrice = document.createElement('h5');
+      h5RealProdPrice.textContent = `Real Product Price: ${item.realProdPrice}`;
+      h5RealProdPrice.id = 'realProdPriceResult';
+
+      const h5WorkTimeNeeded = document.createElement('h5');
+      h5WorkTimeNeeded.textContent = `Work Time Needed: ${item.formattedProdHourPrice}`;
+      h5WorkTimeNeeded.id = 'workTimeNeededResult';
+
+      const h5WorkTotalHour = document.createElement('h5');
+      h5WorkTotalHour.textContent = `Work Total Hour: ${item.totalProdHoursPrice}`;
+      h5WorkTotalHour.id = 'workTotalHourResult';
+
+      div.appendChild(h5Timestemp);
+      div.appendChild(h5Salary);
+      div.appendChild(h5ValueDays);
+      div.appendChild(h5ValueHours);
+      div.appendChild(h5RealProdPrice);
+      div.appendChild(h5WorkTimeNeeded);
+      div.appendChild(h5WorkTotalHour);
+
+      container.appendChild(div);
+    });
+    const historicContainers = document.querySelectorAll('.expanded-panel');
+    historicContainers.forEach((item) => {
+      item.classList.add('active');
+    });
+  </script>
+
+</html>

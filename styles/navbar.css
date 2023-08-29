@@ -1,0 +1,26 @@
+.nav-bar {
+    background: #172029;
+    border-radius: 5px;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    max-height: 42px;
+    margin: 14px;
+}
+
+.nav-bar a {
+    float: left;
+    display: block;
+    flex-wrap: wrap;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.nav-bar a:hover {
+    background-color: #ddd;
+    transition: all 0.2s;
+    color: black;
+}

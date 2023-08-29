@@ -53,6 +53,6 @@ function saveInHistory(newItems, localStorageKey = 'PHCH') {
 }
 
 function getHistory() {
-    const history = localStorage.getItem('PIH_history');
-    return history ? history : undefined;
+    const history = localStorage.getItem('PHCH');
+    return history ? JSON.parse(history) : undefined;
 }

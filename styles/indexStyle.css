@@ -122,10 +122,16 @@ form div.inputsContainer {
     height: 0;
 }
 
+#container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .expanded-panel h4 {
     font-size: 1rem;
     margin-top: 3px;
     margin-bottom: 3px;
+    flex: 0 0 calc(33.33% - 20px);
 }
 
 .expanded-panel.active {
