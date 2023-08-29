@@ -124,14 +124,16 @@ form div.inputsContainer {
 
 #container {
     display: flex;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
+    margin-top: 5vw;
+    position: relative;
+    justify-content: space-around;
 }
 
 .expanded-panel h4 {
     font-size: 1rem;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
 }
 
 .expanded-panel.active {
@@ -140,6 +142,7 @@ form div.inputsContainer {
     height: auto;
     width: 500px;
     transition: all 1s;
+    margin: 10px;
 }
 
 footer {
