@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     min-height: 100vh;
     flex-direction: column;
     gap: 30px;
@@ -20,8 +21,9 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     vertical-align: middle;
-    position: absolute;
+    position: fixed;
     background: #0f161e;
+    border-bottom: 19px solid #1d2b3a;
     width: 100%;
     height: fit-content;
 }
@@ -34,13 +36,6 @@ header div h2 {
     margin-top: 24px;
     text-align: center;
     margin-bottom: 20px;
-}
-
-article {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .formContainer {
@@ -116,7 +111,7 @@ form div.inputsContainer {
     background: transparent;
     color: transparent;
     border-radius: 15px;
-    max-width: 320px;
+    max-width: 315px;
     transition: all 0.4s;
     overflow: hidden;
     height: 0;
@@ -125,10 +120,21 @@ form div.inputsContainer {
 #container {
     display: flex;
     flex-direction: row-reverse;
-    flex-wrap: wrap;
-    margin-top: 5vw;
+    z-index: -1;
+    margin-top: 137px;
+    width: 100%;
     position: relative;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.historic {
+    align-self: center;
+    display: flex;
+    overflow: auto;
+    max-height: 100vh;
+    margin-bottom: 9vh;
+    margin-top: 2vh;
 }
 
 .expanded-panel h4 {
@@ -146,8 +152,16 @@ form div.inputsContainer {
 }
 
 footer {
-    position: static;
+    border-top: 19px solid #1d2b3a;
+    background: #0f161e;
+    width: 100%;
+    display: flex;
+    position: fixed;
     color: white;
+    min-height: 59px;
+    bottom: 0;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 a {
