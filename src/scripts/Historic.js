@@ -1,3 +1,5 @@
+import { formatDate } from './utils/utils';
+
 function filterAndDistinct(array) {
     const distinctObjects = [];
     const seenObjects = new Set();
@@ -11,18 +13,6 @@ function filterAndDistinct(array) {
     }
 
     return distinctObjects;
-}
-
-function formatDate(date, getHours = false) {
-    if (!date) return null;
-    const d = new Date(new Date(date).toUTCString().substr(0, 25));
-    if (getHours) {
-        return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()} ${d.getHours().toString().padStart(2, '0')}:${d
-            .getMinutes()
-            .toString()
-            .padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
-    }
-    return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
 }
 
 function genDate() {

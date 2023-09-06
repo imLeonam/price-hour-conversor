@@ -174,12 +174,25 @@
           selectLanguage.value,
         );
 
+
         const valueHours = productHourPrice.getEarnPerHour();
         const valueDays = productHourPrice.getEarnPerDay();
         const salaryValue = productHourPrice.getSalary();
         const realProdPrice = productHourPrice.getProductPrice();
         const totalProdHoursPrice = productHourPrice.productValueInHours();
-        const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
+        const formatProdHourPrice = () => {
+          const {
+            years,
+            months,
+            days,
+            hours,
+            minutes,
+            seconds,
+          } = productHourPrice.getTime();
+
+          return `${years} y|${months} m|${days} d|${hours} h|${minutes} min|${seconds} sec`
+        }
+        const formattedProdHourPrice = formatProdHourPrice();
 
         const historyData = {
           valueHours: valueHours.toFixed(2),
@@ -193,14 +206,14 @@
         saveInHistory(historyData);
 
         if (selectLanguage.value === 'br') {
-          salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
-          valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays) + ' por dia';
-          valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours) + ' por hora';
+          salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue, selectLanguage.value);
+          valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays, selectLanguage.value) + ' por dia';
+          valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours, selectLanguage.value) + ' por hora';
         }
         else if (selectLanguage.value === 'en') {
-          salaryResult.innerText = 'You earn ' + productHourPrice.formatCurrency(salaryValue);
-          valueDaysResult.innerText = productHourPrice.formatCurrency(valueDays) + ' per day';
-          valueHoursResult.innerText = 'and ' + productHourPrice.formatCurrency(valueHours) + ' hourly';
+          salaryResult.innerText = 'You earn ' + productHourPrice.formatCurrency(salaryValue, selectLanguage.value);
+          valueDaysResult.innerText = productHourPrice.formatCurrency(valueDays, selectLanguage.value) + ' per day';
+          valueHoursResult.innerText = 'and ' + productHourPrice.formatCurrency(valueHours, selectLanguage.value) + ' hourly';
         }
 
         if (!productPrice) {
