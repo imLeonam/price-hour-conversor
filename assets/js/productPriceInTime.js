@@ -1,27 +1,23 @@
-class ProductPriceInTime {
-  constructor(productPrice, salary, workingHours, workingDays, lang) {
+export class ProductPriceInTime {
+  constructor(productPrice, salary, workingHours, workingDays, monthDays) {
     this.productPrice = parseFloat(productPrice);
     this.salary = parseFloat(salary);
     this.workingHours = parseFloat(workingHours);
     this.workingDays = parseFloat(workingDays);
-    this.monthDays = 22;
+    this.monthDays = monthDays ?? 22;
     this.earnedPerDay = 0;
     this.earnedPerHour = 0;
-    this.lang = lang;
   }
 
-  formatCurrency(amount, language = 'pt-BR', currency = 'BRL', precision = 2) {
-    if (this.lang === 'en') {
-      currency = 'USD';
-    }
+  formatCurrency(amount, precision = 2) {
     let amountParsed = amount;
     if (typeof amountParsed !== 'number') {
       amountParsed = parseFloat(amount);
     }
     if (typeof amountParsed !== 'number') return null;
-    return amountParsed.toLocaleString(language, {
+    return amountParsed.toLocaleString('pt-BR', {
       style: 'currency',
-      currency,
+      currency: 'BRL',
       minimumFractionDigits: precision,
       maximumFractionDigits: precision,
     });
@@ -33,20 +29,12 @@ class ProductPriceInTime {
       const restHours = decimal % this.workingHours;
       const minutes = Math.round((restHours - Math.floor(restHours)) * 60);
 
-      if (this.lang === 'br') {
-        return `${dias} dias, ${Math.floor(restHours)} horas e ${minutes} minutos`;
-      } else if (this.lang === 'en') {
-        return `${dias} days, ${Math.floor(restHours)} hours and ${minutes} minutes`;
-      }
+      return `${dias} dias, ${Math.floor(restHours)} horas e ${minutes} minutos`;
     }
     const hours = Math.floor(decimal);
     const minutes = Math.round((decimal - hours) * 60);
 
-    if (this.lang === 'br') {
-      return `${hours ? hours + ' horas e ' : ''}${minutes} minutos`;
-    } else if (this.lang === 'en') {
-      return `${hours ? hours + ' hours and ' : ''}${minutes} minutes`;
-    }
+    return `${hours ? hours + ' horas e ' : ''}${minutes} minutos`;
   }
 
   myValuePerHour() {

@@ -1,0 +1,139 @@
+:root {
+    --primary-color: #2c70eef2;
+    --primary-color-lighter: #558cf4;
+    --primary-color-darker: #245ec8f2;
+    --positive: #91ff1cd9;
+    --negative: #eb321d;
+    --negative-lighter: #dd776b;
+    --negative-darker: #c52816;
+    --warning: #ffd119;
+    --dark: #454545c4;
+    --darker: #2a2a2a;
+}
+
+* {
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--darker);
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.5em;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-negative {
+    background-color: var(--negative);
+}
+
+.bg-negative-lighter {
+    background-color: var(--negative-lighter);
+}
+.bg-negative-darker {
+    background-color: var(--negative-darker);
+}
+
+.text--primary {
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 640px;
+    min-width: 300px;
+    margin: 50px;
+    margin-bottom: 120px;
+    background-color: var(--dark);
+    padding: 20px 40px;
+    border-radius: 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+.shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+form input,
+form label,
+form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 12px;
+}
+
+form input {
+    font-size: 24px;
+    height: 50px;
+    padding: 0 20px;
+}
+
+form input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+form button {
+    border: none;
+    background: var(--primary-color);
+    color:#fff;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.2s ease-in-out;
+}
+
+form button:hover {
+    background-color: var(--primary-color-darker);
+    color: aliceblue;
+    transform: scale(1.01);
+}
+form button.bg-negative:hover {
+    background-color: var(--negative-darker);
+    color: aliceblue;
+    transform: scale(1.01);
+}
+
+.expanded-panel.active {
+    color: white;
+    height: auto;
+}
+
+
+footer {
+    background: var(--dark);
+    width: 100%;
+    display: flex;
+    position: fixed;
+    color: white;
+    height: 50px;
+    bottom: 0;
+    z-index: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+footer ion-icon {
+    vertical-align: middle;
+    text-align: center;
+}

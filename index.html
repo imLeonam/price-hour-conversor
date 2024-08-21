@@ -1,238 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="pt-BR">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Price in WorkHour</title>
-    <!-- <link href="/dist/output.css" rel="stylesheet" /> -->
-    <link href="/styles/indexStyle.css" rel="stylesheet" />
-    <link href="/styles/selectStyle.css" rel="stylesheet" />
-    <link href="/styles/input.css" rel="stylesheet" />
-    <link href="/styles/navbar.css" rel="stylesheet" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo em dinheiro</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
 
-  <body>
-    <!-- Title -->
-    <header>
-      <div>
-        <h2 data-lang="en">
-          PRICE IN TIME CONVERSOR
-        </h2>
-        <h2 data-lang="br">
-          CONVERSOR DE PREÇO EM HORA
-        </h2>
-      </div>
-      <div class="select">
-        <select id="change-language">
-          <option value="en">
-            EN
-          </option>
-          <option value="br" selected="selected">
-            PT
-          </option>
-        </select>
-        <span class="focus"></span>
-      </div>
-      <nav class="nav-bar">
-        <div class="links">
-          <a class="active" href="index.html">
-            Home
-          </a>
-          <a href="/historic.html">
-            <span data-lang="br"> Histórico </span>
-            <span data-lang="en"> Historic </span>
-          </a>
-        </div>
-      </nav>
-    </header>
+<body>
+    <section class="container shadow">
+        <h1>Converter tempo em dinheiro</h1>
 
-    <!-- Form/Results -->
-    <article>
-      <div class="formContainer">
-        <form>
-          <div class="inputsContainer">
-            <div class="inputBox">
-              <input id="txtSalary" name="salary" for="txtSalary" type="text" required="not-required" />
-              <span data-lang="en">SALARY</span>
-              <span data-lang="br">SALÁRIO</span>
-            </div>
-            <div class="inputBox">
-              <input id="txtWorkingDays" name="workingDays" for="txtWorkingDays" type="text" required="not-required" />
-              <span data-lang="en">WORKING DAYS / WEEK</span>
-              <span data-lang="br">DIAS TRABALHADOS / SEMANA</span>
-            </div>
-            <div class="inputBox">
-              <input id="txtWorkingHours" name="workingHours" for="txtWorkingHours" type="text"
-                required="not-required" />
-              <span data-lang="en">WORKING HOURS / DAY</span>
-              <span data-lang="br">HORAS TRABALHADAS / DIA</span>
-            </div>
-            <div class="inputBox">
-              <input id="txtProductPrice" name="productPrice" for="txtProductPrice" type="text"
-                required="not-required" />
-              <span data-lang="en">PRODUCT PRICE</span>
-              <span data-lang="br">PREÇO DO PRODUTO</span>
-            </div>
-            <div class="buttonsContainer">
-              <button class="reset" onclick="onClearClick()" type="reset">
-                <span>
-                  <ion-icon name="trash-outline"></ion-icon>
-                </span>
-                <span data-lang="en">CLEAR</span>
-                <span data-lang="br">LIMPAR</span>
-              </button>
-              <button class="submit" onclick="submitClick()">
-                <span>
-                  <ion-icon name="checkmark-circle-outline"></ion-icon>
-                </span>
-                <span data-lang="en">SUBMIT</span>
-                <span data-lang="br">CALCULAR</span>
-              </button>
-            </div>
+        <p>
+            Preencha os campos e descubra quanto você ganha por hora,
+            por dia e quanto tempo precisará para comprar algo.
+        </p>
+        <form id="form">
+            <label for="salary">Salário:</label>
+            <input placeholder="0.00" step="0.01" type="number" id="salary">
+
+            <label for="daysPerWeek">Dias por semana:</label>
+            <input placeholder="0.00" step="0.01" type="float" id="daysPerWeek">
+
+            <label for="hoursPerDay">Horas por dia:</label>
+            <input placeholder="0.00" step="0.01" type="number" id="hoursPerDay">
+
+            <label for="comparationValue">Valor de comparação:</label>
+            <input placeholder="0.00" step="0.01" type="float" id="comparationValue">
+
+            <button class="shadow" type="submit">Calcular</button>
+            <button class="shadow bg-negative" type="reset">Limpar</button>
         </form>
-      </div>
-      </div>
 
-      <!-- Results -->
-      <div class="expanded-panel">
-        <h5 id="salaryResult"></h5>
-        <h5 id="valueDaysResult"></h5>
-        <h5 id="valueHoursResult"></h5>
-        <h5 id="realProdPriceResult"></h5>
-        <h5 id="workTimeNeededResult"></h5>
-        <h5 id="workTotalHourResult"></h5>
-      </div>
-    </article>
+        <div class="expanded-panel">
+            <p id="salaryResult"></p>
+            <p id="valueDaysResult"></p>
+            <p id="valueHoursResult"></p>
+            <p id="realProdPriceResult"></p>
+            <p id="workTimeNeededResult"></p>
+            <p id="workTotalHourResult"></p>
+        </div>
+    </section>
 
-    <footer>
-      <div class="">
-        <h4 class="">
-          <span data-lang="en">By</span>
-          <span data-lang="br">Por</span>
-          <a class="" href="https://github.com/imLeonam">
-            @imLeonam
-            <ion-icon class="" name="logo-github"></ion-icon></a>
-        </h4>
-      </div>
+    <footer class="shadow">
+        <div>
+            <h4>
+                <span data-lang="br">Por</span>
+                <a href="https://github.com/imLeonam">
+                    @imLeonam
+                    <ion-icon name="logo-github"></ion-icon></a>
+            </h4>
+        </div>
     </footer>
-  </body>
-  <script src="libs/i18n-language.js-master/i18n-language.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-  <script src="/src/scripts/ProductPriceInTime.js"></script>
-  <script src="/src/scripts/Historic.js"></script>
-
-  <script>
-    let resultsContainer = document.querySelector('.expanded-panel');
-    const salaryResult = document.querySelector('#salaryResult');
-    const valueDaysResult = document.querySelector('#valueDaysResult');
-    const valueHoursResult = document.querySelector('#valueHoursResult');
-    const realProdPriceResult = document.querySelector('#realProdPriceResult');
-    const workTimeNeededResult = document.querySelector('#workTimeNeededResult');
-    const workTotalHourResult = document.querySelector('#workTotalHourResult');
-
-    const selectLanguage = document.querySelector("#change-language");
-
-    function submitClick() {
-      const form = document.querySelector('form');
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const productPrice = document.querySelector('#txtProductPrice').value;
-        const salary = document.querySelector('#txtSalary').value;
-        const workingHours = document.querySelector('#txtWorkingHours').value;
-        const workingDays = document.querySelector('#txtWorkingDays').value;
-
-        if (workingHours > 21) {
-          if (this.lang === 'en') {
-            window.alert('You\'re working too much, find help!');
-            return;
-          }
-          if (this.lang === 'br') {
-            window.alert('Você esta trabalhando demais, busque ajuda!');
-            return;
-          }
-        }
-        if (workingDays > 7) {
-          if (this.lang === 'en') {
-            window.alert('The weeks have only 7 days!');
-            return;
-          }
-          if (this.lang === 'br') {
-            window.alert('As semanas só tem 7 dias!');
-            return;
-          }
-        }
-
-        const productHourPrice = new ProductPriceInTime(
-          productPrice,
-          salary,
-          workingHours,
-          workingDays,
-          selectLanguage.value,
-        );
-
-        const valueHours = productHourPrice.getEarnPerHour();
-        const valueDays = productHourPrice.getEarnPerDay();
-        const salaryValue = productHourPrice.getSalary();
-        const realProdPrice = productHourPrice.getProductPrice();
-        const totalProdHoursPrice = productHourPrice.productValueInHours();
-        const formattedProdHourPrice = productHourPrice.convertDecimalTime(totalProdHoursPrice);
-
-        const historyData = {
-          valueHours: valueHours.toFixed(2),
-          valueDays: valueDays.toFixed(2),
-          salaryValue: salaryValue.toFixed(2),
-          realProdPrice: realProdPrice.toFixed(2),
-          totalProdHoursPrice: totalProdHoursPrice.toFixed(2),
-          formattedProdHourPrice: formattedProdHourPrice,
-        }
-
-        saveInHistory(historyData);
-
-        if (selectLanguage.value === 'br') {
-          salaryResult.innerText = 'Você ganha ' + productHourPrice.formatCurrency(salaryValue);
-          valueDaysResult.innerText = 'Sendo ' + productHourPrice.formatCurrency(valueDays) + ' por dia';
-          valueHoursResult.innerText = 'e ' + productHourPrice.formatCurrency(valueHours) + ' por hora';
-        }
-        else if (selectLanguage.value === 'en') {
-          salaryResult.innerText = 'You earn ' + productHourPrice.formatCurrency(salaryValue);
-          valueDaysResult.innerText = productHourPrice.formatCurrency(valueDays) + ' per day';
-          valueHoursResult.innerText = 'and ' + productHourPrice.formatCurrency(valueHours) + ' hourly';
-        }
-
-        if (!productPrice) {
-          resultsContainer.classList.add('active');
-          return;
-        }
-
-        if (selectLanguage.value === 'br') {
-          realProdPriceResult.innerText = 'O Gasto é ' + realProdPrice;
-          workTimeNeededResult.innerText = 'Você precisa trabalhar ' + formattedProdHourPrice + ' para pagar isso.';
-          workTotalHourResult.innerText = 'Aproximadamente ' + totalProdHoursPrice.toFixed(2) + ' horas.';
-        }
-        else if (selectLanguage.value === 'en') {
-          realProdPriceResult.innerText = 'The expanse is ' + realProdPrice;
-          workTimeNeededResult.innerText = 'you need to work ' + formattedProdHourPrice + ' to pay this.';
-          workTotalHourResult.innerText = 'Approximately ' + totalProdHoursPrice.toFixed(2) + ' hours.';
-        }
-
-        resultsContainer.classList.add('active');
-      })
-    }
-
-    function onClearClick() {
-      resultsContainer.classList.remove('active');
-      salaryResult.innerText = '';
-      valueDaysResult.innerText = '';
-      valueHoursResult.innerText = '';
-      realProdPriceResult.innerText = '';
-      workTimeNeededResult.innerText = '';
-      workTotalHourResult.innerText = '';
-    }
-
-  </script>
+    <script type="module" src="./assets/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
 
 </html>
