@@ -75,8 +75,7 @@ form.addEventListener('submit', (event) => {
     onSubmit();
 });
 
-form.addEventListener('reset', (event) => {
-    event.preventDefault();
+form.addEventListener('reset', () => {
     onReset();
 });
 
