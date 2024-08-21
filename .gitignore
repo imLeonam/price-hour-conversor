@@ -1,5 +1,0 @@
-node_modules/
-package-lock*
-yarn*
-dist/assets/*
-dist/index.html
