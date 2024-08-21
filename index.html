@@ -1,62 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempo em dinheiro</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tempo em dinheiro</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
 
-<body>
-    <section class="container shadow">
-        <h1>Converter tempo em dinheiro</h1>
+    <body>
+        <section class="container shadow">
+            <h1>Converter tempo em dinheiro</h1>
 
-        <p>
-            Preencha os campos e descubra quanto você ganha por hora,
-            por dia e quanto tempo precisará para comprar algo.
-        </p>
-        <form id="form">
-            <label for="salary">Salário:</label>
-            <input placeholder="0.00" step="0.01" type="number" id="salary">
+            <p>
+                Preencha os campos e descubra quanto você ganha por hora,
+                por dia e quanto tempo precisará para comprar algo.
+            </p>
+            <form id="form">
+                <label for="salary">Salário:</label>
+                <input placeholder="0.00" step="0.01" type="number" id="salary">
 
-            <label for="daysPerWeek">Dias por semana:</label>
-            <input placeholder="0.00" step="0.01" type="float" id="daysPerWeek">
+                <label for="daysPerWeek">Dias por semana:</label>
+                <input placeholder="0.00" step="0.01" type="float" id="daysPerWeek">
 
-            <label for="hoursPerDay">Horas por dia:</label>
-            <input placeholder="0.00" step="0.01" type="number" id="hoursPerDay">
+                <label for="hoursPerDay">Horas por dia:</label>
+                <input placeholder="0.00" step="0.01" type="number" id="hoursPerDay">
 
-            <label for="comparationValue">Valor de comparação:</label>
-            <input placeholder="0.00" step="0.01" type="float" id="comparationValue">
+                <label for="comparationValue">Valor de comparação:</label>
+                <input placeholder="0.00" step="0.01" type="float" id="comparationValue">
 
-            <button class="shadow" type="submit">Calcular</button>
-            <button class="shadow bg-negative" type="reset">Limpar</button>
-        </form>
+                <button class="shadow" type="submit">Calcular</button>
+                <button class="shadow bg-negative" type="reset">Limpar</button>
+            </form>
 
-        <div class="expanded-panel">
-            <p id="salaryResult"></p>
-            <p id="valueDaysResult"></p>
-            <p id="valueHoursResult"></p>
-            <p id="realProdPriceResult"></p>
-            <p id="workTimeNeededResult"></p>
-            <p id="workTotalHourResult"></p>
-        </div>
-    </section>
+            <div class="expanded-panel">
+                <p id="salaryResult"></p>
+                <p id="valueDaysResult"></p>
+                <p id="valueHoursResult"></p>
+                <p id="realProdPriceResult"></p>
+                <p id="workTimeNeededResult"></p>
+                <p id="workTotalHourResult"></p>
+            </div>
+        </section>
 
-    <footer class="shadow">
-        <div>
-            <h4>
-                <span data-lang="br">Por</span>
-                <a href="https://github.com/imLeonam">
-                    @imLeonam
-                    <ion-icon name="logo-github"></ion-icon></a>
-            </h4>
-        </div>
-    </footer>
-
-    <script type="module" src="./assets/js/main.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+        <script type="module" src="./assets/js/main.js"></script>
+    </body>
 
 </html>
